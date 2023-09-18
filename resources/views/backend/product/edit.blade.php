@@ -38,6 +38,9 @@
                     @error('price')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
+                    <div>
+                        <img src="{{asset('/')}}{{$product->image}}" alt="" height="50" width="70">
+                    </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Image</label>
                         <input type="file" accept="image/*" class="form-control" name="image" value="{{ $product->image }}">

@@ -31,7 +31,7 @@
                                 <td>{{ $product->title }}</td>
                                 <td>{{ $product->description }}</td>
                                 <td>{{ $product->price }}</td>
-                                <td>{{ $product->image }}</td>
+                                <td><img src="{{asset('/')}}{{$product->image}}" alt="" height="50" width="70"></td>
                                 <td>
                                     <a href="{{ route('edit', $product->id) }}" class="btn btn-sm btn-success">Edit</a>
                                     <a href="{{ route('destroy', $product->id) }}"
