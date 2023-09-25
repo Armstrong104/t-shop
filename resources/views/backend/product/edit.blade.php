@@ -15,8 +15,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <form action="{{ route('update',$product->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('products.update',$product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Title *</label>
                         <input type="text" class="form-control" name="title" value="{{ $product->title }}">

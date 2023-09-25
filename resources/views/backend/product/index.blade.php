@@ -33,9 +33,14 @@
                                 <td>{{ $product->price }}</td>
                                 <td><img src="{{asset('/')}}{{$product->image}}" alt="" height="50" width="70"></td>
                                 <td>
-                                    <a href="{{ route('edit', $product->id) }}" class="btn btn-sm btn-success">Edit</a>
-                                    <a href="{{ route('destroy', $product->id) }}"
-                                        class="btn btn-sm btn-danger ms-2">Delete</a>
+                                    <div class="d-flex gap-2">
+                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-success">Edit</a>
+                                        <form action="{{route('products.destroy',$product->id)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

@@ -16,9 +16,4 @@ Route::get('/show-product-details/{id}',[ProductController::class,'show'])->name
 // For backend
 
 Route::get('/dashboard',[AdminDashboardController::class,'index'])->name('dashboard');
-Route::get('/add-product',[ProductController::class,'create'])->name('create');
-Route::get('/products',[ProductController::class,'index'])->name('products');
-Route::post('/store-product',[ProductController::class,'store'])->name('store');
-Route::get('/delete-product/{id}',[ProductController::class,'destroy'])->name('destroy');
-Route::get('/edit-product/{id}',[ProductController::class,'edit'])->name('edit');
-Route::post('/update-product/{id}',[ProductController::class,'update'])->name('update');
+Route::resource('products', ProductController::class);

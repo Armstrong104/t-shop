@@ -7,20 +7,25 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(){
+   /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
         return view('backend.product.index',['products'=>Product::all()]);
     }
 
-    public function create(){
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
         return view('backend.product.create');
     }
 
-    public function show(int $id)
-    {
-        $product = Product::find($id);
-        return view('frontend.product.details',['product' => $product]);
-    }
-
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -45,13 +50,28 @@ class ProductController extends Controller
         return back()->with('notification','Product Added Successfully');
     }
 
-    public function edit(int $id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $product = Product::find($id);
+        return view('frontend.product.details',['product' => $product]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $product = Product::where('id',$id)->first();
         return view('backend.product.edit',['product'=>$product]);
     }
 
-    public function update(Request $request,int $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
         $request->validate([
             'title' => 'required | max:50',
@@ -74,10 +94,13 @@ class ProductController extends Controller
         }
         $product->save();
 
-        return to_route('products')->with('notification','Product Updated Successfully');
+        return to_route('products.index')->with('notification','Product Updated Successfully');
     }
 
-    public function destroy(int $id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         $product = Product::find($id);
         if(file_exists($product->image)){
@@ -87,7 +110,4 @@ class ProductController extends Controller
 
         return back()->with('notification','Product Deleted Successfully');
     }
-
-
-
 }
