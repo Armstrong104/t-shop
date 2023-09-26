@@ -230,7 +230,7 @@
                                     <h4 class="text-primary">{{ $product->price }}</h4>
                                 </div>
                                 <div class="store-overlay">
-                                    <a href="{{route('show',$product->id)}}" class="btn btn-primary rounded-pill py-2 px-4 m-2">More Details <i
+                                    <a href="{{route('products.show',$product->id)}}" class="btn btn-primary rounded-pill py-2 px-4 m-2">More Details <i
                                             class="fa fa-arrow-right ms-2"></i></a>
                                     <a href="" class="btn btn-dark rounded-pill py-2 px-4 m-2">Add to Cart <i
                                             class="fa fa-cart-plus ms-2"></i></a>
